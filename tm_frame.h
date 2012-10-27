@@ -9,6 +9,7 @@ class TmFrame
     byte freq[8];    // 0x00
     byte disp[6];    // 0x02
     byte smeter;     // 0x05
+    byte alt;        // 0x06
     byte mr[2];      // 0x07
     byte fstat;      // 0x08
     
@@ -22,6 +23,7 @@ class TmFrame
     char * freq_s();
     char * freq_ss();  // short format
     char * smeter_s();
+    char * alt_s();
     char * mr_s();
     char * power_s();
     char CMV_s();

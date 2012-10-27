@@ -116,6 +116,9 @@ void print_frame(byte fid) {
   case 0x05:  // s-meter
     Serial.println(tmf.smeter_s());
     break;
+  case 0x06:  // ALT
+    Serial.println(tmf.alt_s());
+    break;
   case 0x07:  // memory channel status
     if(tmf.isnt_MR()) break;  // in VFO mode
     Serial.print("M");

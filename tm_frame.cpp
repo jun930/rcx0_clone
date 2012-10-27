@@ -20,6 +20,9 @@ byte TmFrame::parse(byte v){
   }else if(fid == 0x05){
     smeter = v;
     pfid = fid; fid = 0xff;
+  }else if(fid == 0x06){
+    alt = v;
+    pfid = fid; fid = 0xff;
   }else if(fid == 0x07){
     mr[fbyte++] = v;
     if((v & 0xf0) == 0x80 || fbyte >= 2){ pfid = fid; fid = 0xff; }
@@ -84,6 +87,17 @@ char * TmFrame::smeter_s(){
     str[3] = ' ';
   }
   str[4] = '\0';
+  return str;
+}
+
+char * TmFrame::alt_s(){
+  if((alt & 0x04) == 0){
+    strcpy(str, "ALT OFF");
+  }else{
+    strcpy(str, " ALT ");
+    if(alt & 0x01) str[4] = '>';
+    if(alt & 0x02) str[0] = '<';
+  }
   return str;
 }
 
